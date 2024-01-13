@@ -1,0 +1,39 @@
+.about {
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.AppLogo {
+    height: 5vmin;
+    pointer-events: none;
+}
+
+.otherlogos {
+    height: 5vmin;
+    pointer-events: none;
+}
+
+.iconsStyle {
+    font-size: 20px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .AppLogo {
+        animation: AppLogo-spin infinite 20s linear;
+    }
+}
+
+@keyframes AppLogo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
