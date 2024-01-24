@@ -12,7 +12,6 @@ interface AboutProps {}
 export const About: React.FunctionComponent<AboutProps> = (props) => {
   return(
     <div className={styles.about}>
-      <Container fluid className="">
         <Card>
           <Card.Body>
             <Card.Text>
@@ -41,7 +40,6 @@ export const About: React.FunctionComponent<AboutProps> = (props) => {
             </Card.Text>
           </Card.Body>
         </Card>
-      </Container>
     </div>
   );
 };

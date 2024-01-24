@@ -6,6 +6,8 @@ import { Footer } from './components/footer/footer';
 import { TemplatesCode } from './components/templatesCode/templatesCode';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { GetCode } from './components/getCode/getCode';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Sidebar } from './components/sidebar/sidebar';
 
 function App() {
   const [showTemplatesCode, setShowTemplatesCode] = useState(true);
@@ -25,14 +27,22 @@ function App() {
         {/* <Route path="/" element={<TemplatesCode/>} /> */}
         <Route path="/" element={<Footer/>} />
       </Routes>
-          <Header></Header>
-          <About/>
-          {showTemplatesCode ? (
-            <TemplatesCode onGetCodeClick={handleGetCodeClick} />
-          ) : (
-            <GetCode />
-          )}
-          <Footer/>
+          {/* <Header/> */}
+          {/* <Sidebar/> */}
+            <Row className='pe-2'>
+              <Col xs={2}>
+                <Sidebar/>
+              </Col>
+              <Col xs={10}>
+                <About/>
+                {showTemplatesCode ? (
+                  <TemplatesCode onGetCodeClick={handleGetCodeClick} />
+                ) : (
+                  <GetCode />
+                )}
+                <Footer/>
+              </Col>
+            </Row>
       </header>
       </Router>
 

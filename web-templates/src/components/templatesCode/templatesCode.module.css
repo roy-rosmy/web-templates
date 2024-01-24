@@ -8,5 +8,8 @@
 
 .hidden {
     display: none;
-  }
+}
   
+.code-contents{
+    text-align: left;
+}
