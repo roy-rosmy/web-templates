@@ -13,3 +13,14 @@
 .code-contents{
     text-align: left;
 }
+
+.code-styles{
+    background: #35384b;
+    color: white;
+    padding: 2%;
+    font-size: 16px;
+}
+
+.code-header{
+    background: aliceblue!important;
+}

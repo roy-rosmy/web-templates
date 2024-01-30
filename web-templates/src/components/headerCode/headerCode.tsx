@@ -1,6 +1,5 @@
-import PropTypes from "prop-types";
 import styles from "./headerCode.module.css";
-import { Button, Card, Col, Container, Form, FormControl, Nav, Navbar, Row } from "react-bootstrap";
+import { Col, Container, Form, FormControl, Nav, Navbar, Row } from "react-bootstrap";
 
 interface HeaderCodeProps {}
 
