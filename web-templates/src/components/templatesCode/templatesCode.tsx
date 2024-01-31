@@ -7,7 +7,7 @@ import { useState } from "react";
 import Accordion from 'react-bootstrap/Accordion';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 interface TemplatesCodeProps {
   onGetCodeClick?: () => void;
@@ -74,9 +74,10 @@ export const TemplatesCode: React.FunctionComponent<TemplatesCodeProps> = ({onGe
             <Card.Body>
               <Card>
                 <Card.Header className={`d-flex justify-content-between align-items-center ${styles["code-header"]}`}>
+                  {/* change content inside the card based on the selection between React/Angular/Html  */}
                   {activeTab === ActiveTab.REACT && 'React'}
                   {activeTab === ActiveTab.ANGULAR && 'Angular'}
-                  {activeTab === ActiveTab.HTML && 'HTML/JS'}
+                  {activeTab === ActiveTab.HTML && 'HTML'}
 
                   {activeTab === ActiveTab.REACT &&(
                     <Button 
@@ -88,23 +89,43 @@ export const TemplatesCode: React.FunctionComponent<TemplatesCodeProps> = ({onGe
                     </Button>
                   )}
                   {activeTab === ActiveTab.ANGULAR &&(
-                    <Button 
+                    <div className="d-flex justify-content-between">
+                      <Button 
+                      variant="secondary" 
+                      className="ml-auto"  
+                      onClick={() => handleTabChange(ActiveTab.REACT)}
+                      >
+                      <FontAwesomeIcon icon={faArrowLeft} />React
+                      </Button>
+                      <div className="mx-2"></div>
+                      <Button 
+                        variant="secondary" 
+                        className="ml-auto"  
+                        onClick={() => handleTabChange(ActiveTab.HTML)}
+                        >
+                        HTML/JS <FontAwesomeIcon icon={faArrowRight} />
+                      </Button>
+                    </div>
+                  )}
+                  {activeTab === ActiveTab.HTML &&(
+                      <Button 
                       variant="secondary" 
                       className="ml-auto"  
                       onClick={() => handleTabChange(ActiveTab.ANGULAR)}
-                      active={activeTab === ActiveTab.ANGULAR}>
-                      HTML/JS <FontAwesomeIcon icon={faArrowRight} />
+                      >
+                      <FontAwesomeIcon icon={faArrowLeft} />Angular
                     </Button>
                   )}
                 </Card.Header>
                 <Card.Body>
+                  {/* Selected button is React */}
                   {activeTab === ActiveTab.REACT && (
                    <Tabs
-                    defaultActiveKey="html"
+                    defaultActiveKey="react"
                     id="uncontrolled-tab-example"
                     className="mb-3"
                   >
-                    <Tab eventKey="html" title="headerCode.tsx">
+                    <Tab eventKey="react" title="headerCode.tsx">
                     <pre className={styles["code-styles"]} style={{ whiteSpace: 'pre' }}>
                       <code>
                         {`import styles from "./headerCode.module.css";\n`}
@@ -163,6 +184,8 @@ export const TemplatesCode: React.FunctionComponent<TemplatesCodeProps> = ({onGe
                   </Tabs>
                   )}
 
+                  {/* Selected button is Angular */}
+
                   {activeTab === ActiveTab.ANGULAR && (
                    <Tabs
                     defaultActiveKey="ts"
@@ -187,7 +210,6 @@ export const TemplatesCode: React.FunctionComponent<TemplatesCodeProps> = ({onGe
                     <Tab eventKey="html" title="header.component.html">
                     <pre className={styles["code-styles"]} style={{ whiteSpace: 'pre' }}>
                       <code>
-                        {`<!-- header.component.html -->\n`}
                         {`<div class="header-code">\n`}
                         {`  <div class="container-fluid mt-3 align-items-start">\n`}
                         {`    <div class="row">\n`}
@@ -224,7 +246,6 @@ export const TemplatesCode: React.FunctionComponent<TemplatesCodeProps> = ({onGe
                     <Tab eventKey="css" title="header.component.css">
                     <pre className={styles["code-styles"]} style={{ whiteSpace: 'pre' }}>
                       <code>
-                        {`/* header.component.css */\n`}
                         {`.header-code {\n`}
                         {`  \n`}
                         {`}\n\n`}
@@ -237,6 +258,76 @@ export const TemplatesCode: React.FunctionComponent<TemplatesCodeProps> = ({onGe
                   </Tabs>
                   )}
 
+                  {/* Selected button is Html */}
+
+                  {activeTab === ActiveTab.HTML && (
+                   <Tabs
+                    defaultActiveKey="html"
+                    id="uncontrolled-tab-example"
+                    className="mb-3"
+                  >
+                    <Tab eventKey="html" title="header.html">
+                    <pre className={styles["code-styles"]} style={{ whiteSpace: 'pre' }}>
+                      <code>
+                        {`<!DOCTYPE html>\n`}
+                        {`<html lang="en">\n`}
+                        {`<head>\n`}
+                        {`  <meta charset="UTF-8">\n`}
+                        {`  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n`}
+                        {`  <title>Header Code</title>\n`}
+                        {`  <link rel="stylesheet" href="styles.css">\n`}
+                        {`</head>\n`}
+                        {`<body>\n`}
+                        {`  <div class="header-code">\n`}
+                        {`    <div class="container-fluid mt-3 align-items-start">\n`}
+                        {`      <div class="row">\n`}
+                        {`        <div class="col">\n`}
+                        {`          <nav class="navbar navbar-light bg-light">\n`}
+                        {`            <div class="container-fluid">\n`}
+                        {`              <a class="navbar-brand ml-0" href="#">\n`}
+                        {`                <img alt="" src="/img/logo.svg" width="30" height="30" class="d-inline-block align-top">\n`}
+                        {`                WebSite\n`}
+                        {`              </a>\n`}
+                        {`              <form class="d-flex">\n`}
+                        {`                <input class="form-control mr-sm-2" type="text" placeholder="Search">\n`}
+                        {`              </form>\n`}
+                        {`              <ul class="navbar-nav">\n`}
+                        {`                <li class="nav-item">\n`}
+                        {`                  <a class="nav-link navLinkCustom" href="#about">About</a>\n`}
+                        {`                </li>\n`}
+                        {`                <li class="nav-item">\n`}
+                        {`                  <a class="nav-link navLinkCustom" href="#menu">Menu</a>\n`}
+                        {`                </li>\n`}
+                        {`                <li class="nav-item">\n`}
+                        {`                  <a class="nav-link navLinkCustom" href="#contact">Contact</a>\n`}
+                        {`                </li>\n`}
+                        {`              </ul>\n`}
+                        {`            </div>\n`}
+                        {`          </nav>\n`}
+                        {`        </div>\n`}
+                        {`      </div>\n`}
+                        {`    </div>\n`}
+                        {`  </div>\n`}
+                        {`</body>\n`}
+                        {`</html>`}
+                      </code>
+                    </pre>
+                    </Tab>
+                    <Tab eventKey="html" title="style.css">
+                    <pre className={styles["code-styles"]} style={{ whiteSpace: 'pre' }}>
+                      <code>
+                        {`/* styles.css */\n`}
+                        {`.header-code {\n`}
+                        {`  /* Add any necessary styles for the header-code container */\n`}
+                        {`}\n`}
+                        {`.navLinkCustom {\n`}
+                        {`  font-size: 16px !important; /* Adjust the size as needed */\n`}
+                        {`}\n`}
+                      </code>
+                    </pre>
+                    </Tab>
+                  </Tabs>
+                  )}
                 </Card.Body>
               </Card>
             </Card.Body>
